@@ -1,1 +1,1 @@
-# workshop7
+# Workshop 7: Map Reduce File System
