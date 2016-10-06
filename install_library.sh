@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-#Install g++-4.9
+echo "Installing g++-4.9"
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
-sudo apt-get install g++-4.9
+sudo apt-geti -y install g++-4.9
 
-#Install Casablanca
+echo "Installing Casablanca"
 sudo apt-get install -y libxml++2.6-dev libxml++2.6-doc uuid-dev g++ git make libboost-all-dev libssl-dev cmake
+mkdir -p src
 cd ~/src
 git clone https://github.com/Microsoft/cpprestsdk.git casablanca
 cd casablanca/Release
@@ -16,16 +18,16 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-4.9
 make
 sudo make install
 
-#Create the CMake Find file
+echo "Creating the CMake Find file"
 cd ~/src
 wget https://raw.githubusercontent.com/Azure/azure-storage-cpp/master/Microsoft.WindowsAzure.Storage/cmake/Modules/LibFindMacros.cmake
-sudo mv LibFindMacros.cmake /usr/share/cmake-2.8/Modules
+sudo mv LibFindMacros.cmake /usr/local/share/cmake-3.2/Modules
 sudo wget https://raw.githubusercontent.com/Azure/azure-storage-cpp/master/Microsoft.WindowsAzure.Storage/cmake/Modules/FindCasablanca.cmake
-sudo mv FindCasablanca.cmake /usr/share/cmake-2.8/Modules
+sudo mv FindCasablanca.cmake /usr/local/share/cmake-3.2/Modules
 wget https://raw.githubusercontent.com/Tokutek/mongo/master/cmake/FindSSL.cmake
-sudo mv FindSSL.cmake /usr/share/cmake-2.8/Modules
+sudo mv FindSSL.cmake /usr/local/share/cmake-3.2/Modules
 
-#Install Azure Storage CPP
+echo "Install Azure Storage CPP"
 cd ~/src
 git clone https://github.com/Azure/azure-storage-cpp.git
 cd azure-storage-cpp/Microsoft.WindowsAzure.Storage
@@ -41,4 +43,4 @@ sudo cp -r ~/src/azure-storage-cpp/Microsoft.WindowsAzure.Storage/includes/* /us
 
 #Create the CMake Find File
 cd ${DIR}
-sudo cp FindAzureStorageCpp.cmake /usr/share/cmake-2.8/Modules
+sudo cp FindAzureStorageCpp.cmake /usr/local/share/cmake-3.2/Modules
