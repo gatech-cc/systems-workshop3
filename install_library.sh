@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Installing g++-4.9"
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
-sudo apt-geti -y install g++-4.9
+sudo apt-get -y install g++-4.9
 
 echo "Installing Casablanca"
 sudo apt-get install -y libxml++2.6-dev libxml++2.6-doc uuid-dev g++ git make libboost-all-dev libssl-dev cmake
