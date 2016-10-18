@@ -17,6 +17,7 @@ cd build.release
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-4.9
 make
 sudo make install
+sudo ldconfig
 
 echo "Creating the CMake Find file"
 cd ~/src
@@ -40,6 +41,8 @@ sudo cp ~/src/azure-storage-cpp/Microsoft.WindowsAzure.Storage/build.release/Bin
 sudo rm /usr/local/lib/libazurestorage.so 
 sudo ln -s /usr/local/lib/libazurestorage.so.2.3 /usr/local/lib/libazurestorage.so
 sudo cp -r ~/src/azure-storage-cpp/Microsoft.WindowsAzure.Storage/includes/* /usr/local/include
+
+sudo ldconfig
 
 #Create the CMake Find File
 cd ${DIR}
