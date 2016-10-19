@@ -39,7 +39,8 @@ make
 #Install library
 sudo cp ~/src/azure-storage-cpp/Microsoft.WindowsAzure.Storage/build.release/Binaries/* /usr/local/lib
 sudo rm /usr/local/lib/libazurestorage.so 
-sudo ln -s /usr/local/lib/libazurestorage.so.2.3 /usr/local/lib/libazurestorage.so
+sudo rm /usr/local/lib/libazurestorage.so.2
+sudo ln -s /usr/local/lib/libazurestorage.so.2.4 /usr/local/lib/libazurestorage.so
 sudo cp -r ~/src/azure-storage-cpp/Microsoft.WindowsAzure.Storage/includes/* /usr/local/include
 
 sudo ldconfig
