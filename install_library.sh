@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -x
-trap read debug
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 numprocs=$(cat /proc/cpuinfo | grep processor | wc -l)
 
